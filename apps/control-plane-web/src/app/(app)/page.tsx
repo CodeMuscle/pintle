@@ -5,20 +5,20 @@ import { Button } from "@migrationtower/ui";
 import { useMe } from "@/lib/api/hooks";
 import { useSessionStore } from "@/lib/stores/session-store";
 
-export default function Home() {
+export default function DashboardPage() {
   const tenantId = useSessionStore((s) => s.tenantId);
   const { data, isLoading, error } = useMe();
 
   return (
-    <main className="flex min-h-[calc(100vh-64px)] flex-col items-center justify-center gap-8 p-8">
-      <div className="space-y-2 text-center">
-        <h1 className="text-4xl font-semibold tracking-tight">Customer Migration Control Tower</h1>
-        <p className="text-muted-foreground">
-          Internal control plane &mdash; Phase&nbsp;1 Lesson&nbsp;5 wiring check
+    <div className="mx-auto flex max-w-2xl flex-col gap-8">
+      <div className="space-y-1">
+        <h1 className="text-2xl font-semibold tracking-tight">Dashboard</h1>
+        <p className="text-sm text-muted-foreground">
+          Phase&nbsp;1 Lesson&nbsp;6 — app shell wiring check.
         </p>
       </div>
 
-      <section className="w-full max-w-md rounded-lg border border-border bg-card p-4 text-card-foreground">
+      <section className="rounded-lg border border-border bg-card p-4 text-card-foreground">
         <h2 className="mb-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
           /v1/me
         </h2>
@@ -53,11 +53,11 @@ export default function Home() {
         )}
       </section>
 
-      <div className="flex flex-wrap items-center justify-center gap-3">
+      <div className="flex flex-wrap gap-3">
         <Button>Default</Button>
         <Button variant="secondary">Secondary</Button>
         <Button variant="outline">Outline</Button>
       </div>
-    </main>
+    </div>
   );
 }
