@@ -1,22 +1,35 @@
 "use client";
 
-import { useOrganization } from "@clerk/nextjs";
+import { useOrganization, useUser } from "@clerk/nextjs";
 import { useEffect } from "react";
 
+import { posthog } from "@/lib/analytics/posthog-provider";
 import { useSessionStore } from "@/lib/stores/session-store";
 
 /**
- * Mirrors Clerk's active organization's `publicMetadata.tenantId` into
- * the session store. Runs once on mount and any time the user switches
- * orgs in the OrganizationSwitcher.
+ * Two integration steps run on every sign-in / org switch:
+ *   1. Mirror Clerk's active org metadata → session store (tenant id)
+ *   2. Identify the user in PostHog with tenant + email
  */
 export function useSessionBootstrap() {
-  const { organization, isLoaded } = useOrganization();
+  const { organization, isLoaded: orgLoaded } = useOrganization();
+  const { user, isLoaded: userLoaded } = useUser();
   const setTenantId = useSessionStore((s) => s.setTenantId);
 
+  // 1. Clerk active org → session store
   useEffect(() => {
-    if (!isLoaded) return;
+    if (!orgLoaded) return;
     const fromClerk = organization?.publicMetadata?.tenantId;
     setTenantId(typeof fromClerk === "string" ? fromClerk : null);
-  }, [isLoaded, organization, setTenantId]);
+  }, [orgLoaded, organization, setTenantId]);
+
+  // 2. Identify user in PostHog (idempotent — call on every load)
+  useEffect(() => {
+    if (!userLoaded || !user || !posthog.__loaded) return;
+    posthog.identify(user.id, {
+      email: user.primaryEmailAddress?.emailAddress,
+      tenantId: organization?.publicMetadata?.tenantId,
+      org: organization?.name,
+    });
+  }, [userLoaded, user, organization]);
 }

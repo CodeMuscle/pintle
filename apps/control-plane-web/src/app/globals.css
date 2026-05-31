@@ -13,3 +13,39 @@
  * Path is relative to THIS file: apps/control-plane-web/src/app/.
  */
 @source "../../../../packages/ui/src/**/*.{ts,tsx}";
+
+/*
+ * cmdk command palette styles. The library uses [cmdk-*] attribute
+ * selectors; we drive everything off shadcn tokens already in scope.
+ */
+[cmdk-overlay] {
+  @apply fixed inset-0 z-50 bg-black/50 backdrop-blur-sm;
+}
+
+[cmdk-dialog] {
+  @apply fixed left-1/2 top-[20%] z-50 w-full max-w-lg -translate-x-1/2 rounded-lg border border-border bg-popover text-popover-foreground shadow-2xl;
+}
+
+[cmdk-input] {
+  @apply w-full border-b border-border bg-transparent px-4 py-3 text-sm outline-none placeholder:text-muted-foreground;
+}
+
+[cmdk-list] {
+  @apply max-h-80 overflow-y-auto p-2;
+}
+
+[cmdk-group-heading] {
+  @apply px-2 pb-1 pt-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground;
+}
+
+[cmdk-item] {
+  @apply flex cursor-pointer items-center gap-2 rounded-md px-2 py-2 text-sm;
+}
+
+[cmdk-item][data-selected="true"] {
+  @apply bg-accent text-accent-foreground;
+}
+
+[cmdk-empty] {
+  @apply py-6 text-center text-sm text-muted-foreground;
+}
