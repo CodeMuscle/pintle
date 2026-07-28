@@ -21,31 +21,7 @@ middle.**
 A multi-tenant system: web apps and an embeddable SDK on top of a single HTTP
 API, with heavy work pushed to idempotent BullMQ workers.
 
-```
-        ┌─────────────────┐   ┌─────────────────┐   ┌──────────────┐
-        │ control-plane-  │   │ customer-portal │   │  docs-site   │
-        │     web         │   │  (+ SDK embed)  │   │              │
-        └────────┬────────┘   └────────┬────────┘   └──────────────┘
-                 │                     │
-                 └──────────┬──────────┘
-                            ▼
-                  ┌────────────────────┐
-                  │   services/api     │  common envelope on every response;
-                  │  tenant middleware │  tenant context resolved per request
-                  └─────────┬──────────┘
-              ┌─────────────┼───────────────────────────┐
-              ▼             ▼                            ▼
-       ┌────────────┐  ┌─────────┐                ┌────────────────┐
-       │ PostgreSQL │  │  Redis  │ ── BullMQ ──▶  │ workers:       │
-       │ (tenant_id │  │ (queue) │                │  validation    │
-       │ everywhere)│  └─────────┘                │  import        │
-       └────────────┘                             │  sync          │
-              ▲                                   └───────┬────────┘
-              │                                           │
-       ┌────────────┐                                     │
-       │ S3 / MinIO │ ◀───────── source files / artifacts ┘
-       └────────────┘
-```
+<img width="2816" height="1536" alt="pintle_architecture_diagram" src="https://github.com/user-attachments/assets/2d4c709b-1017-4990-846c-3e67f3683960" />
 
 - **`services/api`** — the only writer of record. Every response uses the
   common envelope (`@migrationtower/contracts`); every protected route resolves
