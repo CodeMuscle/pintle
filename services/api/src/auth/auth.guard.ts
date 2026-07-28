@@ -9,10 +9,10 @@
  * user → AUTH_REQUIRED; valid user but no membership → TENANT_FORBIDDEN.
  * (CLAUDE.md → Tenant context resolution.)
  */
-import type { TenantContext } from "@migrationtower/contracts";
-import { prisma } from "@migrationtower/db";
 import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
+import type { TenantContext } from "@pintle/contracts";
+import { prisma } from "@pintle/db";
 
 import { ApiException } from "../common/api-exception.js";
 import { IS_PUBLIC_KEY, SKIP_TENANT_CHECK_KEY } from "../common/decorators.js";

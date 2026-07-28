@@ -12,6 +12,7 @@
  *   validation.completed         →  validation.completed + issues.generated
  *   validation.failed            →  validation.failed
  */
+import { Injectable, Logger, OnApplicationBootstrap, OnApplicationShutdown } from "@nestjs/common";
 import {
   UPLOAD_PROCESSING_QUEUE,
   UploadProcessingResultSchema,
@@ -19,9 +20,8 @@ import {
   ValidationResultSchema,
   type DomainEvent,
   type DomainEventName,
-} from "@migrationtower/contracts";
-import { redisConnection } from "@migrationtower/services-common";
-import { Injectable, Logger, OnApplicationBootstrap, OnApplicationShutdown } from "@nestjs/common";
+} from "@pintle/contracts";
+import { redisConnection } from "@pintle/services-common";
 import { QueueEvents } from "bullmq";
 
 import { EventBus } from "./event-bus.js";

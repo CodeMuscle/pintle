@@ -3,15 +3,15 @@
  * project, re-parseable on demand) + the destination schemas the product
  * model exposes (per-tenant override, global fallback).
  */
+import { Injectable } from "@nestjs/common";
 import type {
   DetectedFormat,
   DestinationSchemaStatus,
   SchemaRegistryDTO,
   SourceType,
   TenantContext,
-} from "@migrationtower/contracts";
-import { prisma as basePrisma } from "@migrationtower/db";
-import { Injectable } from "@nestjs/common";
+} from "@pintle/contracts";
+import { prisma as basePrisma } from "@pintle/db";
 import { InjectPinoLogger, PinoLogger } from "nestjs-pino";
 
 import { ApiException } from "../common/api-exception.js";

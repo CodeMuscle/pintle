@@ -1,6 +1,6 @@
 /** Schema Registry endpoints — blueprint Module 5 API surface. */
-import type { SchemaRegistryDTO, TenantContext } from "@migrationtower/contracts";
 import { Controller, Get, Param, Post, Req } from "@nestjs/common";
+import type { SchemaRegistryDTO, TenantContext } from "@pintle/contracts";
 
 import { ApiException } from "../common/api-exception.js";
 import { requestIdOf } from "../common/request-id.js";

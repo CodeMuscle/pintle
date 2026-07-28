@@ -511,7 +511,7 @@ ALTER TABLE "public"."mapping_templates" ADD CONSTRAINT "mapping_templates_tenan
 -- ─────────────────────────────────────────────────────────────────────────────
 -- CHECK constraints for enum-like columns (blueprint: "Check constraints for
 -- enum-like fields when not using PostgreSQL enums"). Kept in sync with
--- @migrationtower/contracts src/enums.ts.
+-- @pintle/contracts src/enums.ts.
 -- ─────────────────────────────────────────────────────────────────────────────
 ALTER TABLE "public"."users" ADD CONSTRAINT "users_status_check" CHECK ("status" IN ('active','invited','disabled'));
 ALTER TABLE "public"."memberships" ADD CONSTRAINT "memberships_role_check" CHECK ("role" IN ('owner','admin','manager','engineer','customer_viewer','customer_editor'));

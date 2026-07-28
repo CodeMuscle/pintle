@@ -1,5 +1,5 @@
 /**
- * @migrationtower/db — Prisma client + tenant-scoped access.
+ * @pintle/db — Prisma client + tenant-scoped access.
  *
  * Two entry points:
  *   - `prisma`               base client; use for global/identity reads

@@ -4,10 +4,10 @@
  * downstream reads it through `TenantContextService` (never off headers).
  * See CLAUDE.md → Tenant context resolution.
  */
-import type { TenantContext } from "@migrationtower/contracts";
 import { Inject, Injectable, Scope, createParamDecorator } from "@nestjs/common";
 import type { ExecutionContext } from "@nestjs/common";
 import { REQUEST } from "@nestjs/core";
+import type { TenantContext } from "@pintle/contracts";
 
 /** Property name the AuthGuard sets on the Fastify request. */
 export const TENANT_CONTEXT_KEY = "tenantContext" as const;

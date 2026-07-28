@@ -7,7 +7,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 
-import type { DetectedFormat } from "@migrationtower/contracts";
+import type { DetectedFormat } from "@pintle/contracts";
 
 const EXT: Record<string, DetectedFormat> = {
   ".csv": "csv",

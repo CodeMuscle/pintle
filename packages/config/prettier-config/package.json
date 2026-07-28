@@ -1,5 +1,5 @@
 {
-  "name": "@migrationtower/prettier-config",
+  "name": "@pintle/prettier-config",
   "version": "0.0.0",
   "private": true,
   "description": "Shared Prettier configuration for the Migration Tower monorepo.",
@@ -8,8 +8,8 @@
     "index.js"
   ],
   "scripts": {
-    "lint": "echo \"@migrationtower/prettier-config: nothing to lint\"",
-    "type-check": "echo \"@migrationtower/prettier-config: nothing to type-check\"",
-    "test": "echo \"@migrationtower/prettier-config: no tests\""
+    "lint": "echo \"@pintle/prettier-config: nothing to lint\"",
+    "type-check": "echo \"@pintle/prettier-config: nothing to type-check\"",
+    "test": "echo \"@pintle/prettier-config: no tests\""
   }
 }

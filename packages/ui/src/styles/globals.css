@@ -1,8 +1,8 @@
 /*
- * @migrationtower/ui — Tailwind v4 + shadcn/ui design tokens.
+ * @pintle/ui — Tailwind v4 + shadcn/ui design tokens.
  *
  * Import once per app:
- *   import "@migrationtower/ui/styles.css";
+ *   import "@pintle/ui/styles.css";
  *
  * Token shape: shadcn CSS variables (HSL channels) live on :root + .dark.
  * The @theme block maps them to Tailwind's design-token namespace so

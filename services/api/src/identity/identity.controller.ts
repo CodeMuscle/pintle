@@ -5,9 +5,9 @@
  *   GET  /v1/me
  * Handlers return bare data; the global interceptor adds the success envelope.
  */
-import { IdentityDTO } from "@migrationtower/contracts";
-import type { TenantContext } from "@migrationtower/contracts";
 import { Body, Controller, Get, Post, Req } from "@nestjs/common";
+import { IdentityDTO } from "@pintle/contracts";
+import type { TenantContext } from "@pintle/contracts";
 
 import { ApiException } from "../common/api-exception.js";
 import { SkipTenantCheck } from "../common/decorators.js";

@@ -1,6 +1,6 @@
 {
   "//": "Root tsconfig for editors/IDE only. Each package has its own build tsconfig.",
-  "extends": "@migrationtower/tsconfig/base.json",
+  "extends": "@pintle/tsconfig/base.json",
   "compilerOptions": {
     "noEmit": true
   },

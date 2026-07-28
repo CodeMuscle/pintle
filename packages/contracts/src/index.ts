@@ -1,5 +1,5 @@
 /**
- * @migrationtower/contracts — canonical cross-package contracts.
+ * @pintle/contracts — canonical cross-package contracts.
  *
  * Zod schemas + inferred TypeScript types for the API envelope, tenant
  * context, job/event envelopes, shared enums, and the request/response DTOs

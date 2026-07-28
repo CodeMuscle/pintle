@@ -1,5 +1,5 @@
 {
-  "name": "@migrationtower/worker-sync",
+  "name": "@pintle/worker-sync",
   "version": "0.0.0",
   "private": true,
   "description": "BullMQ worker: ongoing source<->destination sync jobs (idempotent).",
@@ -14,11 +14,11 @@
     "dev": "tsc -p tsconfig.json --watch",
     "lint": "eslint \"src/**/*.ts\" --max-warnings=0",
     "type-check": "tsc -p tsconfig.json --noEmit",
-    "test": "echo \"@migrationtower/worker-sync: no tests yet\"",
+    "test": "echo \"@pintle/worker-sync: no tests yet\"",
     "clean": "rm -rf dist .turbo *.tsbuildinfo"
   },
   "devDependencies": {
-    "@migrationtower/tsconfig": "workspace:*",
+    "@pintle/tsconfig": "workspace:*",
     "@types/node": "20",
     "typescript": "^5.4.5"
   }

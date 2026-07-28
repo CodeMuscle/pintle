@@ -1,5 +1,5 @@
 {
-  "extends": "@migrationtower/tsconfig/base.json",
+  "extends": "@pintle/tsconfig/base.json",
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src"

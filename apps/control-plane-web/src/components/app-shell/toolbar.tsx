@@ -1,5 +1,5 @@
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
-import { cn } from "@migrationtower/ui";
+import { cn } from "@pintle/ui";
 
 interface TopbarProps {
   className?: string;

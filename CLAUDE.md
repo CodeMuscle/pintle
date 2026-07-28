@@ -1,4 +1,4 @@
-# CLAUDE.md — Customer Migration Control Tower
+# CLAUDE.md — Pintle (Customer Migration Control Tower)
 
 Project memory for Claude Code. Read this before working in this repo.
 
@@ -69,7 +69,7 @@ are now decided and in code:
 
 - **Backend = NestJS 10 + Fastify** (`@nestjs/platform-fastify`). Built/run
   with the Nest CLI (`nest build` / `nest start --watch`); `pnpm --filter
-@migrationtower/api dev` serves `:4000`.
+@pintle/api dev` serves `:4000`.
 - **Auth = Clerk** (`@clerk/backend`). The global `AuthGuard` is the
   implementation of "Tenant context resolution": Bearer → Clerk user → local
   `users` (by email) → `X-Tenant-Id` validated vs active `memberships`.
@@ -86,7 +86,7 @@ are now decided and in code:
   `isolatedModules`/`incremental` and turns on `emitDecoratorMetadata`/
   `experimentalDecorators` — NestJS DI needs runtime type metadata. It stays
   ESM (NodeNext, `.js` specifiers) so it can import the ESM-only
-  `@migrationtower/contracts` and `/db` on Node 20. Package-local
+  `@pintle/contracts` and `/db` on Node 20. Package-local
   `.eslintrc.cjs` disables `consistent-type-imports` for the same reason.
 - New env: `CLERK_SECRET_KEY` (required for authed routes), `LOG_LEVEL`,
   `OTEL_SERVICE_NAME` (see `.env.example`).
@@ -99,11 +99,11 @@ are now decided and in code:
   `OnApplicationShutdown` (Nest fires those on SIGTERM/SIGINT once
   `enableShutdownHooks()` is called).
 - **Shared queue layer** lives in `services/common`
-  (`@migrationtower/services-common`): `createBaseWorker()` factory wraps
+  (`@pintle/services-common`): `createBaseWorker()` factory wraps
   every queue with the same patterns — 3-attempt exponential backoff, DLQ on
   terminal failure (`<queue>-dlq` sibling), idempotency short-circuit (Redis
   SETNX with 7-day TTL), and `ctx.progress(rows)` for chunked progress.
-- **Queue payload types** are in `@migrationtower/contracts/queues.ts`
+- **Queue payload types** are in `@pintle/contracts/queues.ts`
   (`UploadProcessingJobSchema`) so producer (API) and consumer (worker)
   share one source of truth.
 - **Cross-process progress → SSE**: workers publish progress via
@@ -154,10 +154,13 @@ illustrative, not exhaustive — it collapses `config/*` to one entry and omits
   app (it conflicts with nothing). Remove it if a public docs surface is out of
   scope; nothing else depends on it.
 
-npm scope: `@migrationtower/*` — confirmed against the docs (product is
-"Customer Migration Control Tower"; no brand rename). Module briefs sometimes
-use a placeholder `@app/*` (e.g. `pnpm --filter @app/db …`); that is **not**
-this repo's scope — always use `@migrationtower/*`.
+npm scope: `@pintle/*`. The product/brand is **Pintle** (the customer
+migration control tower); all packages were rebranded from the former
+`@migrationtower/*` scope on 2026-07-28 — the scope, infra identifiers
+(Postgres/MinIO creds, OTel service names), local folder, and GitHub remote
+(`CodeMuscle/pintle`) are now uniform. Module briefs sometimes use a
+placeholder `@app/*` (e.g. `pnpm --filter @app/db …`); that is **not** this
+repo's scope — always use `@pintle/*`.
 
 ## Modules (14)
 
@@ -208,12 +211,12 @@ Note Sync is module 10 but is built **last**.
 
 1. **Tenancy.** Every persisted business record carries a `tenant_id` column.
    No cross-tenant query is allowed. Enforcement point: `prismaForTenant(id)`
-   from `@migrationtower/db` — it auto-injects `tenant_id` into every
+   from `@pintle/db` — it auto-injects `tenant_id` into every
    where/create and **overrides** any caller-supplied `tenantId` (a caller
    cannot escape its tenant). Domain/repository code uses the scoped client and
    never hand-writes tenant filters; the base `prisma` client is for
    global/identity reads, migrations, and seed only. Use `TenantScoped` /
-   `TenantContext` from `@migrationtower/contracts` for typing.
+   `TenantContext` from `@pintle/contracts` for typing.
 2. **API envelope.** Every HTTP endpoint returns the canonical envelope from
    [`database-blueprint.docx`](docs/design/database-blueprint.docx) — never a
    bare resource. Implemented as `ApiEnvelope<T>` in
@@ -288,9 +291,9 @@ pnpm docker:up / docker:down # local postgres/redis/minio/mailhog
 
 ## Conventions for working in this repo
 
-- Shared types go in `@migrationtower/contracts` and are imported, never
+- Shared types go in `@pintle/contracts` and are imported, never
   re-declared per package.
-- Extend the shared `@migrationtower/tsconfig` / `eslint-config` /
+- Extend the shared `@pintle/tsconfig` / `eslint-config` /
   `prettier-config`; don't fork tool config per package.
 - Commits must pass commitlint (Conventional Commits); hooks run lint-staged.
 - New backing service → add to `infra/docker/docker-compose.yml` **and**

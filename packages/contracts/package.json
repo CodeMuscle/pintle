@@ -1,5 +1,5 @@
 {
-  "name": "@migrationtower/contracts",
+  "name": "@pintle/contracts",
   "version": "0.0.0",
   "private": true,
   "description": "Canonical shared contracts: API envelope, tenant context, job descriptors. Source of truth for cross-package types.",
@@ -20,14 +20,14 @@
     "dev": "tsc -p tsconfig.json --watch",
     "lint": "eslint \"src/**/*.ts\" --max-warnings=0",
     "type-check": "tsc -p tsconfig.json --noEmit",
-    "test": "echo \"@migrationtower/contracts: no tests yet\"",
+    "test": "echo \"@pintle/contracts: no tests yet\"",
     "clean": "rm -rf dist .turbo *.tsbuildinfo"
   },
   "dependencies": {
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@migrationtower/tsconfig": "workspace:*",
+    "@pintle/tsconfig": "workspace:*",
     "typescript": "^5.4.5"
   }
 }

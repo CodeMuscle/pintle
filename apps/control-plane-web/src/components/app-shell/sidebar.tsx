@@ -1,4 +1,4 @@
-import { cn } from "@migrationtower/ui";
+import { cn } from "@pintle/ui";
 import { LayoutDashboard, FolderKanban } from "lucide-react";
 
 import { NavItem } from "./nav-item";

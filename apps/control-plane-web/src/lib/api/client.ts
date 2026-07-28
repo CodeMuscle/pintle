@@ -6,7 +6,7 @@
  *
  * Every query/mutation hook composes a bound instance via `useApiClient`.
  */
-import type { ApiEnvelope, ApiError, ApiSuccess } from "@migrationtower/contracts";
+import type { ApiEnvelope, ApiError, ApiSuccess } from "@pintle/contracts";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 

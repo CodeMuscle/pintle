@@ -7,9 +7,9 @@
  *   .base    unscoped client; identity/global reads only (resolve a user by
  *            email before a tenant is known, migrations, seed).
  */
-import { prisma, prismaForTenant } from "@migrationtower/db";
-import type { TenantPrismaClient } from "@migrationtower/db";
 import { Injectable, Scope } from "@nestjs/common";
+import { prisma, prismaForTenant } from "@pintle/db";
+import type { TenantPrismaClient } from "@pintle/db";
 
 import { TenantContextService } from "./tenant-context.js";
 

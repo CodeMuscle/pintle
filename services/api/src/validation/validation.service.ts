@@ -4,6 +4,7 @@
  * `validation` queue, and serves run/summary/listing reads. The actual rule
  * engine runs in `services/worker-validation`.
  */
+import { Injectable } from "@nestjs/common";
 import type {
   IssueSeverity,
   IssueStatus,
@@ -11,8 +12,7 @@ import type {
   ValidationDTO,
   ValidationRuleKey,
   ValidationRunStatus,
-} from "@migrationtower/contracts";
-import { Injectable } from "@nestjs/common";
+} from "@pintle/contracts";
 import { InjectPinoLogger, PinoLogger } from "nestjs-pino";
 
 import { ApiException } from "../common/api-exception.js";

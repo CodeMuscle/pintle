@@ -1,5 +1,5 @@
 /**
- * @migrationtower/api → common module (the brief's "@app/api/common").
+ * @pintle/api → common module (the brief's "@app/api/common").
  * Global so every feature module gets TenantContextService, PrismaService and
  * EventBus by injection. Also registers the global success interceptor and
  * error-envelope filter.

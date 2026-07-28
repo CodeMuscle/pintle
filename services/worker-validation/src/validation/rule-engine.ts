@@ -17,7 +17,7 @@
  * applies the separator to source value treated as-is; date_parse/phone
  * leave the value unchanged for validation purposes.)
  */
-import type { IssueSeverity, ValidationRuleKey } from "@migrationtower/contracts";
+import type { IssueSeverity, ValidationRuleKey } from "@pintle/contracts";
 
 export interface ResolvedMapping {
   sourceFieldKey?: string;

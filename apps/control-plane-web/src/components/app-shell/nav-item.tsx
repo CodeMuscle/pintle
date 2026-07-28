@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@migrationtower/ui";
+import { cn } from "@pintle/ui";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

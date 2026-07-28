@@ -10,12 +10,7 @@
  * sets status=blocked; a blocked project must be resumed (status→active) to
  * its current stage before it can advance again.
  */
-import type {
-  ProjectStage,
-  ProjectStatus,
-  DomainEventName,
-  ProjectsDTO,
-} from "@migrationtower/contracts";
+import type { ProjectStage, ProjectStatus, DomainEventName, ProjectsDTO } from "@pintle/contracts";
 
 type AdvanceStageTarget = ProjectsDTO.AdvanceStageTarget;
 

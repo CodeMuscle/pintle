@@ -1,8 +1,8 @@
 {
-  "name": "@migrationtower/sdk-react",
+  "name": "@pintle/sdk-react",
   "version": "0.0.0",
   "private": true,
-  "description": "React bindings/components on top of @migrationtower/sdk-core.",
+  "description": "React bindings/components on top of @pintle/sdk-core.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -14,11 +14,11 @@
     "dev": "tsc -p tsconfig.json --watch",
     "lint": "eslint \"src/**/*.ts\" --max-warnings=0",
     "type-check": "tsc -p tsconfig.json --noEmit",
-    "test": "echo \"@migrationtower/sdk-react: no tests yet\"",
+    "test": "echo \"@pintle/sdk-react: no tests yet\"",
     "clean": "rm -rf dist .turbo *.tsbuildinfo"
   },
   "devDependencies": {
-    "@migrationtower/tsconfig": "workspace:*",
+    "@pintle/tsconfig": "workspace:*",
     "typescript": "^5.4.5"
   }
 }

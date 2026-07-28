@@ -2,8 +2,8 @@
  * Debug-only: echoes the TenantContext the AuthGuard resolved for this
  * request. Authenticated like any other /v1 route.
  */
-import type { TenantContext } from "@migrationtower/contracts";
 import { Controller, Get } from "@nestjs/common";
+import type { TenantContext } from "@pintle/contracts";
 
 import { ApiException } from "../common/api-exception.js";
 import { CurrentTenant } from "../common/tenant-context.js";

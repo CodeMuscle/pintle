@@ -21,7 +21,7 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../
 
 let container: StartedPostgreSqlContainer;
 // Loaded dynamically AFTER DATABASE_URL points at the container.
-let db: typeof import("@migrationtower/db");
+let db: typeof import("@pintle/db");
 let ProjectsService: typeof import("../dist/projects/projects.service.js").ProjectsService;
 let MappingService: typeof import("../dist/mapping/mapping.service.js").MappingService;
 
@@ -58,15 +58,15 @@ beforeAll(async () => {
   const env = { ...process.env, DATABASE_URL: process.env.DATABASE_URL };
   // Build deps + api (so the dist we import matches source) and apply
   // migrations to the fresh container.
-  execSync("pnpm --filter @migrationtower/db build", { cwd: repoRoot, env, stdio: "inherit" });
-  execSync("pnpm --filter @migrationtower/db exec prisma migrate deploy", {
+  execSync("pnpm --filter @pintle/db build", { cwd: repoRoot, env, stdio: "inherit" });
+  execSync("pnpm --filter @pintle/db exec prisma migrate deploy", {
     cwd: repoRoot,
     env,
     stdio: "inherit",
   });
-  execSync("pnpm --filter @migrationtower/api build", { cwd: repoRoot, env, stdio: "inherit" });
+  execSync("pnpm --filter @pintle/api build", { cwd: repoRoot, env, stdio: "inherit" });
 
-  db = await import("@migrationtower/db");
+  db = await import("@pintle/db");
   ({ ProjectsService } = await import("../dist/projects/projects.service.js"));
   ({ MappingService } = await import("../dist/mapping/mapping.service.js"));
 

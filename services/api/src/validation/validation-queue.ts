@@ -4,9 +4,9 @@
  * so re-calls dedupe and the API-side `QueueEventsBridge` can extract the
  * runId from the jobId for SSE routing.
  */
-import { VALIDATION_QUEUE, type ValidationJob } from "@migrationtower/contracts";
-import { DEFAULT_JOB_OPTIONS, redisConnection } from "@migrationtower/services-common";
 import { Injectable, Logger, OnModuleDestroy } from "@nestjs/common";
+import { VALIDATION_QUEUE, type ValidationJob } from "@pintle/contracts";
+import { DEFAULT_JOB_OPTIONS, redisConnection } from "@pintle/services-common";
 import { Queue } from "bullmq";
 
 export { VALIDATION_QUEUE, type ValidationJob };

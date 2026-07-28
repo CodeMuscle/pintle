@@ -5,8 +5,8 @@
  */
 import { randomUUID } from "node:crypto";
 
-import type { IngestionDTO, SourceType, TenantContext } from "@migrationtower/contracts";
 import { Injectable } from "@nestjs/common";
+import type { IngestionDTO, SourceType, TenantContext } from "@pintle/contracts";
 import { InjectPinoLogger, PinoLogger } from "nestjs-pino";
 
 import { ApiException } from "../common/api-exception.js";

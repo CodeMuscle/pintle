@@ -4,8 +4,8 @@
  * publish/subscribe surface is intentionally what a durable bus would expose
  * so callers don't change when it is swapped.
  */
-import type { DomainEvent, DomainEventName } from "@migrationtower/contracts";
 import { Injectable, Logger } from "@nestjs/common";
+import type { DomainEvent, DomainEventName } from "@pintle/contracts";
 
 type Handler = (event: DomainEvent<unknown>) => void | Promise<void>;
 

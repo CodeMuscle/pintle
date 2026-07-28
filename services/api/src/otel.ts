@@ -17,7 +17,7 @@ function startOtel(): void {
   if (process.env.OTEL_SDK_DISABLED === "true") return;
 
   const sdk = new NodeSDK({
-    serviceName: process.env.OTEL_SERVICE_NAME ?? "migrationtower-api",
+    serviceName: process.env.OTEL_SERVICE_NAME ?? "pintle-api",
     traceExporter: new ConsoleSpanExporter(),
     instrumentations: [
       getNodeAutoInstrumentations({

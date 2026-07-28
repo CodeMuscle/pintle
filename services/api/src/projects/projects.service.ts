@@ -3,14 +3,9 @@
  * listing, detail+summary, server-enforced stage machine, activity feed.
  * Every query is tenant-scoped (cross-tenant access → not found → 404).
  */
-import type {
-  ProjectsDTO,
-  ProjectStage,
-  ProjectStatus,
-  TenantContext,
-} from "@migrationtower/contracts";
-import { Prisma, PrismaClientKnownRequestError } from "@migrationtower/db";
 import { Injectable } from "@nestjs/common";
+import type { ProjectsDTO, ProjectStage, ProjectStatus, TenantContext } from "@pintle/contracts";
+import { Prisma, PrismaClientKnownRequestError } from "@pintle/db";
 import { InjectPinoLogger, PinoLogger } from "nestjs-pino";
 
 import { ApiException } from "../common/api-exception.js";

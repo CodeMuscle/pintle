@@ -1,8 +1,8 @@
 /** Source Ingestion endpoints — blueprint Module 4 API surface. */
-import { IngestionDTO } from "@migrationtower/contracts";
-import type { TenantContext } from "@migrationtower/contracts";
 import { Body, Controller, Get, Headers, Param, Post, Req, Sse } from "@nestjs/common";
 import type { MessageEvent } from "@nestjs/common";
+import { IngestionDTO } from "@pintle/contracts";
+import type { TenantContext } from "@pintle/contracts";
 import { Observable } from "rxjs";
 
 import { ApiException } from "../common/api-exception.js";
