@@ -1,0 +1,12 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pintle">
+  <!-- The Pivot Pin: central pin + two hinge-knuckle hooks in 180° rotational symmetry.
+       Rotate the whole mark a half-turn and it is identical — reversibility, encoded. -->
+  <g stroke="currentColor" stroke-width="9" stroke-linecap="round" fill="none">
+    <!-- top hook, opens right -->
+    <path id="pintle-hook" d="M50 20 a15 15 0 0 1 0 30" />
+    <!-- bottom hook = top hook rotated 180° about centre -->
+    <use href="#pintle-hook" transform="rotate(180 50 50)" />
+    <!-- the pin (the axis) -->
+    <line x1="50" y1="18" x2="50" y2="82" />
+  </g>
+</svg>
