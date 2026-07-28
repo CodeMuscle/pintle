@@ -24,7 +24,7 @@ API, with heavy work pushed to idempotent BullMQ workers.
 
 <img width="2816" height="1536" alt="pintle_architecture_diagram" src="https://github.com/user-attachments/assets/2d4c709b-1017-4990-846c-3e67f3683960" />
 
-
+</br>
 - **`services/api`** — the only writer of record. Every response uses the
   common envelope (`@migrationtower/contracts`); every protected route resolves
   tenant context in middleware.
