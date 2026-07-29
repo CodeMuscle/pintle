@@ -160,33 +160,41 @@ resourcing, billing, Nitro agents). By their own words, _never touches the data_
 The middle — safely moving data into production, reversibly — is unowned. That's
 Pintle.
 
-| Competitor feature        | Pintle's answer                                                                  |
-| ------------------------- | -------------------------------------------------------------------------------- |
-| Flatfile Workbooks        | Reconciliation workbench — spreadsheet-like, but on the diff vs live production. |
-| Flatfile AI mapping       | Same, but _gated_ — can't reach prod without passing reconciliation.             |
-| Flatfile Config (no-code) | Visual recipe builder.                                                           |
-| Flatfile Collaboration    | Issues module (owners, comments, status).                                        |
-| Flatfile Security         | **Self-hostable** — data never leaves customer infra. Decisive win.              |
-| Flatfile Editions         | Pre-built destination-schema recipes + connector SDK.                            |
-| Rocketlane project mgmt   | **Integrate, don't rebuild** — push milestones/status into their portal.         |
+| Competitor feature        | Pintle's answer                                                                                       |
+| ------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Flatfile Workbooks        | Reconciliation workbench — spreadsheet-like, but on the diff vs live production.                      |
+| Flatfile AI mapping       | Same, but _gated_ — can't reach prod without passing reconciliation.                                  |
+| Flatfile Config (no-code) | Visual recipe builder.                                                                                |
+| Flatfile Collaboration    | Issues module (owners, comments, status).                                                             |
+| Flatfile Security         | **Self-hostable** — data never leaves customer infra. Decisive win.                                   |
+| Flatfile Editions         | Pre-built destination-schema recipes + connector SDK.                                                 |
+| Rocketlane project mgmt   | Native delivery surface (portal + status). Optional attachment to Rocketlane for teams already on it. |
 
-**Play:** Flatfile → treat as a _feeder_ (embed for messy-CSV upload UX, own the
-cutover). Rocketlane → _partner/integrate_. Complement, then absorb the
-high-value middle.
+### Product stance — everything in-house by default (decided)
 
-### The "combined suite" question — staged, not simultaneous
+Pintle owns **all** of it natively: the import/onboarding UX, the cutover
+engine, and the delivery/portal surface. No hard dependency on Flatfile or
+Rocketlane — a customer should never _need_ another product to use Pintle.
 
-Building Flatfile + Rocketlane + Pintle at once = three mediocre halves. The
-winning path is **wedge → expand from the hard core outward** (the cutover
-engine is the piece competitors can't bolt on later; their features you can add
-on top of it more easily than they can add your engine under theirs):
+The only role the other two play is **optional side-attachments**: import
+connectors for teams who _already have data or projects living in Flatfile or
+Rocketlane_ and want to pull it in. They are ingest sources, not requirements —
+enabled per tenant, never a dependency. This keeps the "self-hostable, in-house,
+data never leaves your infra" promise intact.
+
+### Build order — in-house, but staged (not all at once)
+
+Owning it all natively doesn't mean building it all at once — that ships three
+mediocre halves. Build the in-house suite **wedge → expand from the hard core
+outward** (the cutover engine is the piece competitors can't bolt on later):
 
 1. **Pintle core** — win the cutover wedge.
-2. **Absorb Flatfile's turf** — onboarding/import UX + embeddable widgets
-   (`sdk-core`/`sdk-react` already exist). Adjacent; shares the data layer.
-3. **Absorb Rocketlane's delivery slice only** — client portal + status +
-   milestones. **Do not rebuild their PSA** (billing/resourcing/time-tracking) —
-   integrate. Rebuilding commodity dilutes the wedge.
+2. **Native onboarding/import UX + embeddable widgets** (`sdk-core`/`sdk-react`
+   already exist) — the Flatfile-class capability, in-house. Optional
+   Flatfile-import attachment for existing-data teams.
+3. **Native delivery surface** — client portal + status + milestones. **Not** a
+   full PSA (billing/resourcing/time-tracking) — that's commodity that dilutes
+   the wedge. Optional Rocketlane attachment for teams already on it.
 4. **Code-migration track** — see §9.
 
 Each stage ships something whole + sellable and funds the next.
