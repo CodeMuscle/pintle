@@ -13,7 +13,7 @@ import { ApiException } from "../common/api-exception.js";
 import { EventBus } from "../common/event-bus.js";
 import { IdempotencyService } from "../common/idempotency.service.js";
 import { PrismaService } from "../common/prisma.service.js";
-import { S3Service } from "../common/s3.service.js";
+import { StorageService } from "../common/storage.service.js";
 import { UploadQueue } from "../common/upload-queue.js";
 
 const PRESIGN_TTL_SECONDS = 900; // 15 minutes
@@ -27,7 +27,7 @@ export class IngestionService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly events: EventBus,
-    private readonly s3: S3Service,
+    private readonly storage: StorageService,
     private readonly queue: UploadQueue,
     private readonly idempotency: IdempotencyService,
     @InjectPinoLogger(IngestionService.name)
@@ -86,7 +86,7 @@ export class IngestionService {
     }
 
     const uploadId = randomUUID();
-    const objectKey = this.s3.objectKey(ctx.tenantId, projectId, uploadId, dto.fileName);
+    const objectKey = this.storage.objectKey(ctx.tenantId, projectId, uploadId, dto.fileName);
 
     const dataSource = await this.prisma.tenant.dataSource.create({
       data: {
@@ -114,7 +114,7 @@ export class IngestionService {
       },
     });
 
-    const uploadUrl = await this.s3.presignPut(objectKey, dto.mimeType, PRESIGN_TTL_SECONDS);
+    const uploadUrl = await this.storage.presignPut(objectKey, dto.mimeType, PRESIGN_TTL_SECONDS);
 
     const response: IngestionDTO.PresignUploadResponse = {
       uploadId,
@@ -156,7 +156,7 @@ export class IngestionService {
       throw ApiException.notFound("Upload not found");
     }
 
-    const exists = await this.s3.objectExists(upload.objectKey);
+    const exists = await this.storage.objectExists(upload.objectKey);
     if (!exists) {
       throw new ApiException(
         "CONFLICT",

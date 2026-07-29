@@ -14,7 +14,7 @@ import { IdempotencyService } from "./idempotency.service.js";
 import { PrismaService } from "./prisma.service.js";
 import { QueueEventsBridge } from "./queue-events-bridge.js";
 import { ResponseInterceptor } from "./response.interceptor.js";
-import { S3Service } from "./s3.service.js";
+import { StorageService } from "./storage.service.js";
 import { TenantContextService } from "./tenant-context.js";
 import { UploadQueue } from "./upload-queue.js";
 
@@ -26,7 +26,7 @@ import { UploadQueue } from "./upload-queue.js";
     EventBus,
     FeatureCache,
     IdempotencyService,
-    S3Service,
+    StorageService,
     UploadQueue,
     QueueEventsBridge,
     { provide: APP_FILTER, useClass: AllExceptionsFilter },
@@ -38,7 +38,7 @@ import { UploadQueue } from "./upload-queue.js";
     EventBus,
     FeatureCache,
     IdempotencyService,
-    S3Service,
+    StorageService,
     UploadQueue,
   ],
 })

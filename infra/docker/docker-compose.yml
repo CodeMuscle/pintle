@@ -1,4 +1,4 @@
-name: migration-tower
+name: pintle
 
 # Local development backing services.
 #   pnpm docker:up    (== docker compose -f infra/docker/docker-compose.yml up -d)
@@ -62,9 +62,9 @@ services:
     entrypoint: >
       /bin/sh -c "
       mc alias set local http://minio:9000 pintle pintle &&
-      mc mb --ignore-existing local/migration-tower &&
-      mc anonymous set none local/migration-tower &&
-      echo 'bucket migration-tower ready';
+      mc mb --ignore-existing local/pintle &&
+      mc anonymous set none local/pintle &&
+      echo 'bucket pintle ready';
       "
 
   mailhog:
