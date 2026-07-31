@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import Hero from "@/components/lp/hero";
+import HeroPipeline from "@/components/lp/hero-pipeline";
 import LPNavbar from "@/components/lp/lp-navbar";
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default function LandingPage() {
     <main className="min-h-screen bg-background text-foreground">
       <LPNavbar />
       <Hero />
+      <HeroPipeline />
 
       {/* ── TODO─────────────────────────────────────
           3. The wedge — "Flatfile gets data in. Rocketlane runs the project.
