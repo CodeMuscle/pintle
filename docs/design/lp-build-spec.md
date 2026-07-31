@@ -19,10 +19,36 @@
 - **Motion:** restrained — scroll-based lazy image reveals, theme switch. No heavy keyframes.
 - (Fonts/exact colors not exposed — it's a JS SPA shell. Use our own: `@pintle/ui` tokens + a grotesk display.)
 
-**browserops.ai:** could not be studied — the site returns **403** to automated fetch.
-To fold in its DNA, paste a screenshot and I'll extract it. From memory it's the darker,
-animated agentic-tool look (atmospheric) — treat that as _optional flavor_ for the hero
-animation only; the backbone below follows paper.design.
+**browserops.ai** (studied from screenshot, 2026-07-31) — **light, not dark:**
+
+- **Type:** heavy bold grotesk display (~800 weight, tight leading), centered. Grey lighter-weight subhead.
+- **Nav:** top bar — icon + wordmark left; text links (Docs, Writings, Privacy) right; a **black pill CTA** ("Talk to a founder").
+- **Hero:** fully centered — huge 2-line headline → grey 2-line subhead → a **terminal install pill**
+  (black rounded bar, mono `curl -fsSL …/install | bash` + copy icon) → a secondary outline button
+  ("Add to Chrome"). Minimal, high-contrast, lots of whitespace.
+- **Hero visual:** a large realistic **product-window mockup** (app UI mid-task) sitting below the fold-line.
+- **Signature move:** a **pixelated / dithered tulip-field** (red/yellow/green mosaic) bleeding up from the
+  bottom edges into white — the one unexpected, memorable burst of colour against an otherwise monochrome page.
+- **Palette:** near-monochrome (black text / white bg / grey subtext, black CTAs) + that single pixel-art image as the only colour.
+
+**What to steal for Pintle:** the centered heavy-grotesk hero; the **install-command pill** (perfect for our
+self-host story — `docker compose up` or a `curl … | install` line); a product-window mockup as the hero visual;
+and above all **one signature element** so the page isn't just clean-minimal (browserops has its pixel field —
+Pintle's should be the animated pipeline, or a dithered brand-teal gradient bleed at the bottom).
+
+## Verdict — which to follow
+
+**paper.design is the backbone.** It's the stronger overall system for an enterprise,
+self-hostable infra tool — dual-theme, restrained, structured feature rhythm. Build Pintle's
+LP on its macrostructure.
+
+From **browserops.ai, graft only two things** (don't copy its look — the pixel-tulip field
+reads consumer/playful, wrong for a migration tool a bank buys):
+
+1. the **install-command pill** in the hero — it sells self-host in one line;
+2. the principle of **one signature element** so the page isn't generic-clean.
+
+Everything below follows this.
 
 ## Direction for Pintle
 
