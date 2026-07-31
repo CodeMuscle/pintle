@@ -3,17 +3,22 @@
 import { cn } from "@pintle/ui";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
-/**
- * Flips the `.dark` class via next-themes. The `mounted` guard avoids a
- * hydration mismatch — the server can't know the resolved theme, so we render
- * a neutral placeholder until the client takes over.
- */
+// ponytail: server snapshot false / client snapshot true = "have we hydrated?"
+// without setState-in-effect (React 19 flags that).
+const subscribe = () => () => {};
+function useMounted() {
+  return useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
+}
+
 export function ThemeToggle({ className }: { className?: string }) {
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
 
   const isDark = resolvedTheme === "dark";
 
