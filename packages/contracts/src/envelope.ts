@@ -9,7 +9,7 @@
  *   meta is ALWAYS { requestId, timestamp }.
  *
  * API payload fields are camelCase (DB columns are snake_case — mapped at the
- * serialization boundary by @migrationtower/db).
+ * serialization boundary by @pintle/db).
  */
 import { z } from "zod";
 

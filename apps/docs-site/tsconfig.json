@@ -1,5 +1,5 @@
 {
-  "extends": "@migrationtower/tsconfig/node-service.json",
+  "extends": "@pintle/tsconfig/node-service.json",
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src"

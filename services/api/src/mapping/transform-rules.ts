@@ -3,11 +3,11 @@
  * `ensureBuiltinTransformRules`). Mappings reference them by `transformRuleId`
  * when `mappingType === "transform"`.
  *
- * The TypeScript config schemas live in `@migrationtower/contracts` (so the
+ * The TypeScript config schemas live in `@pintle/contracts` (so the
  * SDK + UI can validate before the API does); this file owns the DB
  * upsert + the per-rule display names + default configs.
  */
-import { MappingDTO } from "@migrationtower/contracts";
+import { MappingDTO } from "@pintle/contracts";
 
 const BUILTIN_TRANSFORM_RULE_KEYS = MappingDTO.BUILTIN_TRANSFORM_RULE_KEYS;
 type BuiltinTransformRuleKey = MappingDTO.BuiltinTransformRuleKey;

@@ -4,7 +4,7 @@
  * We import the shared design system (Tailwind v4 + shadcn tokens + dark
  * variant + animation keyframes) once here:
  */
-@import "@migrationtower/ui/styles.css";
+@import "@pintle/ui/styles.css";
 
 /*
  * Tell Tailwind to also scan the shared UI package's source files for class

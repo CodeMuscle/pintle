@@ -1,5 +1,7 @@
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
-import { cn } from "@migrationtower/ui";
+import { cn } from "@pintle/ui";
+
+import { ThemeToggle } from "@/components/theme-toggle";
 
 interface TopbarProps {
   className?: string;
@@ -15,6 +17,7 @@ export function Topbar({ className }: TopbarProps) {
         <span className="hidden text-xs text-muted-foreground md:inline">to search</span>
       </div>
       <div className="flex items-center gap-3">
+        <ThemeToggle />
         <OrganizationSwitcher hidePersonal afterCreateOrganizationUrl="/" />
         <UserButton />
       </div>

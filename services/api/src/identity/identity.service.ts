@@ -4,8 +4,8 @@
  */
 import { createHash, randomUUID } from "node:crypto";
 
-import type { IdentityDTO, Role, TenantContext } from "@migrationtower/contracts";
 import { Injectable } from "@nestjs/common";
+import type { IdentityDTO, Role, TenantContext } from "@pintle/contracts";
 
 import { ApiException } from "../common/api-exception.js";
 import { EventBus } from "../common/event-bus.js";

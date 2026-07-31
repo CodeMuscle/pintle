@@ -1,5 +1,5 @@
 {
-  "extends": "@migrationtower/tsconfig/react-library.json",
+  "extends": "@pintle/tsconfig/react-library.json",
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src"

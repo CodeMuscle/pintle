@@ -24,9 +24,9 @@
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "@migrationtower/eslint-config": "workspace:*",
-    "@migrationtower/prettier-config": "workspace:*",
-    "@migrationtower/tsconfig": "workspace:*",
+    "@pintle/eslint-config": "workspace:*",
+    "@pintle/prettier-config": "workspace:*",
+    "@pintle/tsconfig": "workspace:*",
     "eslint": "^8.57.0",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.7",
@@ -34,7 +34,7 @@
     "turbo": "^2.0.6",
     "typescript": "^5.4.5"
   },
-  "prettier": "@migrationtower/prettier-config",
+  "prettier": "@pintle/prettier-config",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@prisma/client",

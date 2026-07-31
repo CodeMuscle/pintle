@@ -1,0 +1,36 @@
+{
+  "name": "@pintle/storage",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Pluggable object storage: one StorageProvider interface, swappable drivers (S3-compatible / filesystem). Self-host without a private cloud; no AWS lock-in.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "lint": "eslint \"src/**/*.ts\" --max-warnings=0",
+    "type-check": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist .turbo *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.654.0",
+    "@aws-sdk/s3-request-presigner": "^3.654.0"
+  },
+  "devDependencies": {
+    "@pintle/tsconfig": "workspace:*",
+    "@types/node": "20",
+    "typescript": "^5.4.5",
+    "vitest": "^2.1.4"
+  }
+}

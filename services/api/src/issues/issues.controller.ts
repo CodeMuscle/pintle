@@ -1,7 +1,7 @@
 /** Issue Management endpoints (LLD §8, partial v1). */
-import { ValidationDTO } from "@migrationtower/contracts";
-import type { TenantContext } from "@migrationtower/contracts";
 import { Body, Controller, Param, Patch, Post, Req } from "@nestjs/common";
+import { ValidationDTO } from "@pintle/contracts";
+import type { TenantContext } from "@pintle/contracts";
 
 import { ApiException } from "../common/api-exception.js";
 import { requestIdOf } from "../common/request-id.js";

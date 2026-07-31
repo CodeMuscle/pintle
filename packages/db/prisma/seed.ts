@@ -2,7 +2,7 @@
  * Demo seed — idempotent. Creates one tenant, one operator user (+ owner
  * membership), default tenant settings, and a global CRM destination schema.
  *
- *   pnpm --filter @migrationtower/db seed
+ *   pnpm --filter @pintle/db seed
  */
 import "dotenv/config";
 import { PrismaPg } from "@prisma/adapter-pg";
@@ -15,8 +15,8 @@ const prisma = new PrismaClient({ adapter: new PrismaPg(pool) });
 
 // The demo operator's email. Override to match your Clerk user's primary
 // email so the AuthGuard (Clerk email → local user) resolves to this seeded
-// owner: `SEED_DEMO_EMAIL=you@example.com pnpm --filter @migrationtower/db seed`.
-const DEMO_EMAIL = process.env.SEED_DEMO_EMAIL ?? "demo@migrationtower.dev";
+// owner: `SEED_DEMO_EMAIL=you@example.com pnpm --filter @pintle/db seed`.
+const DEMO_EMAIL = process.env.SEED_DEMO_EMAIL ?? "demo@pintle.dev";
 
 async function main() {
   const tenant = await prisma.tenant.upsert({

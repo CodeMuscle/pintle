@@ -1,7 +1,7 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
 // Anything matching one of these is allowed without a session.
-const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)"]);
+const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)", "/lp(.*)"]);
 
 export default clerkMiddleware(async (auth, req) => {
   // Default: every route is protected. Public routes opt out.

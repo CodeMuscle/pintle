@@ -1,6 +1,6 @@
 /**
  * Zod validation pipe. The monorepo's DTOs are Zod schemas in
- * @migrationtower/contracts (Module 2 decision — there are no class-validator
+ * @pintle/contracts (Module 2 decision — there are no class-validator
  * classes), so request validation integrates Zod rather than class-validator.
  *
  * Usage (per-param, the idiomatic Nest pattern):

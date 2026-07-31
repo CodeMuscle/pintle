@@ -1,5 +1,5 @@
 {
-  "name": "@migrationtower/sdk-core",
+  "name": "@pintle/sdk-core",
   "version": "0.0.0",
   "private": true,
   "description": "Framework-agnostic TypeScript client for the Migration Tower API.",
@@ -14,11 +14,11 @@
     "dev": "tsc -p tsconfig.json --watch",
     "lint": "eslint \"src/**/*.ts\" --max-warnings=0",
     "type-check": "tsc -p tsconfig.json --noEmit",
-    "test": "echo \"@migrationtower/sdk-core: no tests yet\"",
+    "test": "echo \"@pintle/sdk-core: no tests yet\"",
     "clean": "rm -rf dist .turbo *.tsbuildinfo"
   },
   "devDependencies": {
-    "@migrationtower/tsconfig": "workspace:*",
+    "@pintle/tsconfig": "workspace:*",
     "typescript": "^5.4.5"
   }
 }

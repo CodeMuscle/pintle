@@ -1,7 +1,7 @@
 /** Migration Projects endpoints — blueprint Module 3 API surface. */
-import { ProjectsDTO } from "@migrationtower/contracts";
-import type { TenantContext } from "@migrationtower/contracts";
 import { Body, Controller, Delete, Get, Param, Post, Query, Req } from "@nestjs/common";
+import { ProjectsDTO } from "@pintle/contracts";
+import type { TenantContext } from "@pintle/contracts";
 
 import { ApiException } from "../common/api-exception.js";
 import { requestIdOf } from "../common/request-id.js";

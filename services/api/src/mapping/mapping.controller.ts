@@ -1,7 +1,7 @@
 /** Mapping endpoints — blueprint Module 6 API surface. */
-import { MappingDTO } from "@migrationtower/contracts";
-import type { TenantContext } from "@migrationtower/contracts";
 import { Body, Controller, Get, Headers, Param, Post, Put, Query, Req } from "@nestjs/common";
+import { MappingDTO } from "@pintle/contracts";
+import type { TenantContext } from "@pintle/contracts";
 
 import { ApiException } from "../common/api-exception.js";
 import { requestIdOf } from "../common/request-id.js";

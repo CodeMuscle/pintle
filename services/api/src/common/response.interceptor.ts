@@ -4,9 +4,9 @@
  * Handlers return bare data; they never build envelopes. Errors bypass this
  * and are handled by AllExceptionsFilter.
  */
-import type { ApiSuccess } from "@migrationtower/contracts";
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
+import type { ApiSuccess } from "@pintle/contracts";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 

@@ -123,7 +123,7 @@
   - **Built-in transform rules** (per-tenant, lazy-upserted on first GET
     or PUT): `trim`, `uppercase`, `lowercase`, `concat`, `date_parse`,
     `phone_normalize`. Per-rule config schemas live in
-    `@migrationtower/contracts` (`MappingDTO.TransformRuleConfigSchemas`)
+    `@pintle/contracts` (`MappingDTO.TransformRuleConfigSchemas`)
     so the SDK + UI can validate before the API does.
   - Domain events: `mapping.draft.updated`, `mapping.version.published`,
     `schema.source_snapshot.refreshed`. (`mapping.template.applied` is
@@ -141,7 +141,7 @@
     added later behind an async populator job without breaking callers.
 
 - feat(worker,api,contracts): Module 6 — BullMQ worker layer + upload parse
-  - **`services/common`** (`@migrationtower/services-common`): shared
+  - **`services/common`** (`@pintle/services-common`): shared
     `createBaseWorker()` factory implementing the patterns the brief calls
     out — 3-attempt exponential backoff, terminal-failure DLQ
     (`<queue>-dlq`), Redis-SETNX idempotency short-circuit (7-day TTL), and
@@ -163,7 +163,7 @@
     throw `UnrecoverableError` so they don't burn retries; transient
     failures use the default backoff.
   - **Contracts**: `UploadProcessingJobSchema` + `UploadProcessingResult`
-    pulled into `@migrationtower/contracts/queues.ts` as the single source
+    pulled into `@pintle/contracts/queues.ts` as the single source
     of truth for producer (API) and consumer (worker). Added
     `source.batch.progress` to `DOMAIN_EVENTS`.
   - **API → SSE bridge**: new `QueueEventsBridge` (singleton, OnAppBootstrap)
@@ -297,7 +297,7 @@ joined_at:date / tier:enum[bronze,gold,silver]`, batch transitions to
   - **packages/ui**: Tailwind + shadcn/ui baseline — shared `tailwind-preset`,
     `cn()`, `Button` (cva), token `globals.css`, `components.json`.
   - CLAUDE.md: recorded realized stack choices (Prisma/Zod/Tailwind+shadcn),
-    the `prismaForTenant` tenancy rule, and the `@app/*` vs `@migrationtower/*`
+    the `prismaForTenant` tenancy rule, and the `@app/*` vs `@pintle/*`
     scope caveat.
 
 - chore: reconcile bootstrap against canonical design docs
@@ -335,7 +335,7 @@ Bearer <token>`, `X-Tenant-Id: <tenant_uuid>`, `Idempotency-Key: <uuid>`
     `AUTH_REQUIRED` or `TENANT_FORBIDDEN`. The auth guard itself is owned by
     the Identity module (built first) and is not yet implemented; this is the
     spec it must satisfy.
-  - **npm scope**: confirmed `@migrationtower/*`. The docs name the product
+  - **npm scope**: confirmed `@pintle/*`. The docs name the product
     "Customer Migration Control Tower" with no brand rename, so no scope
     change was required.
   - **Repo layout**: scaffolded `infra/terraform/` and `infra/monitoring/`

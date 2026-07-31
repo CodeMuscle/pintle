@@ -1,5 +1,5 @@
 {
-  "name": "@migrationtower/docs-site",
+  "name": "@pintle/docs-site",
   "version": "0.0.0",
   "private": true,
   "description": "Public documentation site (placeholder; framework added in its module).",
@@ -14,11 +14,11 @@
     "dev": "tsc -p tsconfig.json --watch",
     "lint": "eslint \"src/**/*.ts\" --max-warnings=0",
     "type-check": "tsc -p tsconfig.json --noEmit",
-    "test": "echo \"@migrationtower/docs-site: no tests yet\"",
+    "test": "echo \"@pintle/docs-site: no tests yet\"",
     "clean": "rm -rf dist .turbo *.tsbuildinfo"
   },
   "devDependencies": {
-    "@migrationtower/tsconfig": "workspace:*",
+    "@pintle/tsconfig": "workspace:*",
     "@types/node": "20",
     "typescript": "^5.4.5"
   }

@@ -11,7 +11,7 @@
  * Boolean is checked first so `1`/`0` aren't pre-empted as numbers; date is
  * checked before number so `20240101` isn't pre-empted as a number.
  */
-import type { FieldDataType } from "@migrationtower/contracts";
+import type { FieldDataType } from "@pintle/contracts";
 
 const SAMPLE_LIMIT = 100;
 const ENUM_MAX_CARDINALITY = 20;

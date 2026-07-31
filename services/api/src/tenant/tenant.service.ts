@@ -3,8 +3,8 @@
  * entitlements (1-min cached). All reads/writes go through the tenant-scoped
  * Prisma client.
  */
-import type { TenantContext, TenantDTO, TenantPlan, TenantStatus } from "@migrationtower/contracts";
 import { Injectable } from "@nestjs/common";
+import type { TenantContext, TenantDTO, TenantPlan, TenantStatus } from "@pintle/contracts";
 import { InjectPinoLogger, PinoLogger } from "nestjs-pino";
 
 import { ApiException } from "../common/api-exception.js";

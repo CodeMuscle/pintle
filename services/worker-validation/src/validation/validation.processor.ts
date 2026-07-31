@@ -13,24 +13,23 @@ import { createReadStream, createWriteStream } from "node:fs";
 import { promises as fs } from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
 
-import { GetObjectCommand, S3Client, type GetObjectCommandOutput } from "@aws-sdk/client-s3";
+import { Injectable, OnApplicationBootstrap, OnApplicationShutdown } from "@nestjs/common";
 import {
   VALIDATION_QUEUE,
   ValidationJobSchema,
   type ValidationJob,
   type ValidationResult,
-} from "@migrationtower/contracts";
-import { prisma, prismaForTenant } from "@migrationtower/db";
+} from "@pintle/contracts";
+import { prisma, prismaForTenant } from "@pintle/db";
 import {
   createBaseWorker,
   redisConnection,
   type JobContext,
   type WorkerHandle,
-} from "@migrationtower/services-common";
-import { Injectable, OnApplicationBootstrap, OnApplicationShutdown } from "@nestjs/common";
+} from "@pintle/services-common";
+import { createStorage } from "@pintle/storage";
 import { UnrecoverableError } from "bullmq";
 import { parse as csvParse } from "csv-parse";
 import { InjectPinoLogger, PinoLogger } from "nestjs-pino";
@@ -45,23 +44,10 @@ import {
 
 const BATCH_FLUSH_EVERY = 1000;
 
-function s3Client(): S3Client {
-  return new S3Client({
-    region: process.env.S3_REGION ?? "us-east-1",
-    endpoint: process.env.S3_ENDPOINT,
-    forcePathStyle: process.env.S3_FORCE_PATH_STYLE === "true",
-    credentials: {
-      accessKeyId: process.env.S3_ACCESS_KEY_ID ?? "",
-      secretAccessKey: process.env.S3_SECRET_ACCESS_KEY ?? "",
-    },
-  });
-}
-
 @Injectable()
 export class ValidationProcessor implements OnApplicationBootstrap, OnApplicationShutdown {
   private handle: WorkerHandle<ValidationJob, ValidationResult> | null = null;
-  private readonly bucket = process.env.S3_BUCKET ?? "migration-tower";
-  private readonly s3 = s3Client();
+  private readonly storage = createStorage();
 
   constructor(
     @InjectPinoLogger(ValidationProcessor.name)
@@ -168,13 +154,9 @@ export class ValidationProcessor implements OnApplicationBootstrap, OnApplicatio
         };
       });
 
-      // 3. Stream S3 object → temp file → csv-parse.
+      // 3. Stream object → temp file → csv-parse.
       const tmpFile = path.join(tmpDir, path.basename(upload.originalFilename));
-      const obj: GetObjectCommandOutput = await this.s3.send(
-        new GetObjectCommand({ Bucket: this.bucket, Key: upload.objectKey }),
-      );
-      const body = obj.Body as Readable | undefined;
-      if (!body) throw new UnrecoverableError("S3 object body was empty");
+      const body = await this.storage.getStream(upload.objectKey);
       await pipeline(body, createWriteStream(tmpFile));
 
       const parser = createReadStream(tmpFile).pipe(

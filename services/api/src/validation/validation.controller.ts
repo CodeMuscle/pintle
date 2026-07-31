@@ -1,8 +1,8 @@
 /** Validation endpoints — LLD §7. */
-import { ValidationDTO } from "@migrationtower/contracts";
-import type { TenantContext } from "@migrationtower/contracts";
 import { Body, Controller, Get, Param, Post, Query, Req, Sse } from "@nestjs/common";
 import type { MessageEvent } from "@nestjs/common";
+import { ValidationDTO } from "@pintle/contracts";
+import type { TenantContext } from "@pintle/contracts";
 import { Observable } from "rxjs";
 
 import { ApiException } from "../common/api-exception.js";

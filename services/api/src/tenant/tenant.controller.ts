@@ -1,7 +1,7 @@
 /** Tenant endpoints — blueprint Module 2 API surface. */
-import { TenantDTO } from "@migrationtower/contracts";
-import type { TenantContext } from "@migrationtower/contracts";
 import { Body, Controller, Get, Patch, Req } from "@nestjs/common";
+import { TenantDTO } from "@pintle/contracts";
+import type { TenantContext } from "@pintle/contracts";
 
 import { ApiException } from "../common/api-exception.js";
 import { requestIdOf } from "../common/request-id.js";

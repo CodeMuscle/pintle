@@ -27,7 +27,7 @@ API, with heavy work pushed to idempotent BullMQ workers.
 <br />
 
 - **`services/api`** — the only writer of record. Every response uses the
-  common envelope (`@migrationtower/contracts`); every protected route resolves
+  common envelope (`@pintle/contracts`); every protected route resolves
   tenant context in middleware.
 - **Workers** (`worker-validation`, `worker-import`, `worker-sync`) — BullMQ
   consumers. Every job carries a `tenant_id` and an `idempotencyKey`, so retries
@@ -80,13 +80,13 @@ pnpm build
 
 ### Local service endpoints
 
-| Service        | URL / Port              | Credentials                         |
-| -------------- | ----------------------- | ----------------------------------- |
-| PostgreSQL     | `localhost:5432`        | `migrationtower` / `migrationtower` |
-| Redis          | `localhost:6379`        | —                                   |
-| MinIO (S3 API) | `http://localhost:9000` | `migrationtower` / `migrationtower` |
-| MinIO console  | `http://localhost:9001` | `migrationtower` / `migrationtower` |
-| Mailhog UI     | `http://localhost:8025` | —                                   |
+| Service        | URL / Port              | Credentials         |
+| -------------- | ----------------------- | ------------------- |
+| PostgreSQL     | `localhost:5432`        | `pintle` / `pintle` |
+| Redis          | `localhost:6379`        | —                   |
+| MinIO (S3 API) | `http://localhost:9000` | `pintle` / `pintle` |
+| MinIO console  | `http://localhost:9001` | `pintle` / `pintle` |
+| Mailhog UI     | `http://localhost:8025` | —                   |
 
 ## Common commands
 

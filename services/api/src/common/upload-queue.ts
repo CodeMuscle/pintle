@@ -5,9 +5,9 @@
  * The job id is derived from batchId so re-enqueuing the same batch is
  * idempotent (CLAUDE.md → Coding conventions §4).
  */
-import { UPLOAD_PROCESSING_QUEUE, type UploadProcessingJob } from "@migrationtower/contracts";
-import { DEFAULT_JOB_OPTIONS, redisConnection } from "@migrationtower/services-common";
 import { Injectable, Logger, OnModuleDestroy } from "@nestjs/common";
+import { UPLOAD_PROCESSING_QUEUE, type UploadProcessingJob } from "@pintle/contracts";
+import { DEFAULT_JOB_OPTIONS, redisConnection } from "@pintle/services-common";
 import { Queue } from "bullmq";
 
 export { UPLOAD_PROCESSING_QUEUE, type UploadProcessingJob };

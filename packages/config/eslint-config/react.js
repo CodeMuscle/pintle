@@ -1,7 +1,7 @@
 /**
  * React/Next.js ESLint config — layered on top of the base config.
  * Use from web apps and React libraries:
- *   { "extends": ["@migrationtower/eslint-config/react"] }
+ *   { "extends": ["@pintle/eslint-config/react"] }
  */
 module.exports = {
   extends: ["./index.js"],

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@migrationtower/tsconfig/node-service.json",
-  "comment": "NestJS 10 has hard compiler requirements that diverge from the strict shared base: DI needs emitDecoratorMetadata + value (non-type-only) imports, so verbatimModuleSyntax/isolatedModules are off here. ESM (NodeNext) is kept so this service can import the ESM-only @migrationtower/contracts and /db on Node 20. Documented framework deviation, not a convenience relaxation (see CLAUDE.md).",
+  "extends": "@pintle/tsconfig/node-service.json",
+  "comment": "NestJS 10 has hard compiler requirements that diverge from the strict shared base: DI needs emitDecoratorMetadata + value (non-type-only) imports, so verbatimModuleSyntax/isolatedModules are off here. ESM (NodeNext) is kept so this service can import the ESM-only @pintle/contracts and /db on Node 20. Documented framework deviation, not a convenience relaxation (see CLAUDE.md).",
   "compilerOptions": {
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,

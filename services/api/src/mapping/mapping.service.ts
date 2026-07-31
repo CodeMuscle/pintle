@@ -9,9 +9,9 @@
  *     for optimistic concurrency on the draft itself; a mismatch is a
  *     CONFLICT (stale draft) rather than silently overwriting.
  */
-import type { MappingDTO, TenantContext } from "@migrationtower/contracts";
-import { Prisma, prisma as basePrisma } from "@migrationtower/db";
 import { Injectable } from "@nestjs/common";
+import type { MappingDTO, TenantContext } from "@pintle/contracts";
+import { Prisma, prisma as basePrisma } from "@pintle/db";
 import { InjectPinoLogger, PinoLogger } from "nestjs-pino";
 
 import { ApiException } from "../common/api-exception.js";

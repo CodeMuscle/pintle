@@ -21,7 +21,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 
 let container: StartedPostgreSqlContainer;
-let db: typeof import("@migrationtower/db");
+let db: typeof import("@pintle/db");
 let ValidationProcessor: typeof import("../dist/validation/validation.processor.js").ValidationProcessor;
 let s3Mock: ReturnType<typeof mockClient<S3Client>>;
 
@@ -120,24 +120,24 @@ beforeAll(async () => {
   process.env.S3_SECRET_ACCESS_KEY = "x";
   const env = { ...process.env };
 
-  execSync("pnpm --filter @migrationtower/db build", { cwd: repoRoot, env, stdio: "inherit" });
-  execSync("pnpm --filter @migrationtower/db exec prisma migrate deploy", {
+  execSync("pnpm --filter @pintle/db build", { cwd: repoRoot, env, stdio: "inherit" });
+  execSync("pnpm --filter @pintle/db exec prisma migrate deploy", {
     cwd: repoRoot,
     env,
     stdio: "inherit",
   });
-  execSync("pnpm --filter @migrationtower/services-common build", {
+  execSync("pnpm --filter @pintle/services-common build", {
     cwd: repoRoot,
     env,
     stdio: "inherit",
   });
-  execSync("pnpm --filter @migrationtower/worker-validation build", {
+  execSync("pnpm --filter @pintle/worker-validation build", {
     cwd: repoRoot,
     env,
     stdio: "inherit",
   });
 
-  db = await import("@migrationtower/db");
+  db = await import("@pintle/db");
   ({ ValidationProcessor } = await import("../dist/validation/validation.processor.js"));
 
   // Seed: tenant, user, project, data_source, upload, batch, snapshot,

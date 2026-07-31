@@ -1,6 +1,6 @@
 /**
  * Shared Prettier config for the Migration Tower monorepo.
- * Consumed via `"prettier": "@migrationtower/prettier-config"` in package.json.
+ * Consumed via `"prettier": "@pintle/prettier-config"` in package.json.
  *
  * @type {import("prettier").Config}
  */

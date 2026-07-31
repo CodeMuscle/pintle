@@ -3,14 +3,14 @@
  * resolution note, or bulk-resolve a filtered set. The list endpoint lives
  * on the validation module (project-scoped issues feed).
  */
+import { Injectable } from "@nestjs/common";
 import type {
   IssueSeverity,
   IssueStatus,
   TenantContext,
   ValidationDTO,
   ValidationRuleKey,
-} from "@migrationtower/contracts";
-import { Injectable } from "@nestjs/common";
+} from "@pintle/contracts";
 import { InjectPinoLogger, PinoLogger } from "nestjs-pino";
 
 import { ApiException } from "../common/api-exception.js";

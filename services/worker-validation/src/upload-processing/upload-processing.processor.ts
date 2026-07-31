@@ -12,24 +12,23 @@ import { createReadStream, createWriteStream } from "node:fs";
 import { promises as fs } from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
 
-import { GetObjectCommand, S3Client, type GetObjectCommandOutput } from "@aws-sdk/client-s3";
+import { Injectable, OnApplicationBootstrap, OnApplicationShutdown } from "@nestjs/common";
 import {
   UPLOAD_PROCESSING_QUEUE,
   UploadProcessingJobSchema,
   type UploadProcessingJob,
   type UploadProcessingResult,
-} from "@migrationtower/contracts";
-import { prisma, prismaForTenant } from "@migrationtower/db";
+} from "@pintle/contracts";
+import { prisma, prismaForTenant } from "@pintle/db";
 import {
   createBaseWorker,
   redisConnection,
   type JobContext,
   type WorkerHandle,
-} from "@migrationtower/services-common";
-import { Injectable, OnApplicationBootstrap, OnApplicationShutdown } from "@nestjs/common";
+} from "@pintle/services-common";
+import { createStorage } from "@pintle/storage";
 import { UnrecoverableError } from "bullmq";
 import { parse as csvParse } from "csv-parse";
 import { InjectPinoLogger, PinoLogger } from "nestjs-pino";
@@ -39,23 +38,10 @@ import { inferSchema, SCHEMA_INFERENCE_SAMPLE_LIMIT } from "./schema-inference.j
 
 const PROGRESS_EVERY = 1000;
 
-function s3Client(): S3Client {
-  return new S3Client({
-    region: process.env.S3_REGION ?? "us-east-1",
-    endpoint: process.env.S3_ENDPOINT,
-    forcePathStyle: process.env.S3_FORCE_PATH_STYLE === "true",
-    credentials: {
-      accessKeyId: process.env.S3_ACCESS_KEY_ID ?? "",
-      secretAccessKey: process.env.S3_SECRET_ACCESS_KEY ?? "",
-    },
-  });
-}
-
 @Injectable()
 export class UploadProcessingProcessor implements OnApplicationBootstrap, OnApplicationShutdown {
   private handle: WorkerHandle<UploadProcessingJob, UploadProcessingResult> | null = null;
-  private readonly bucket = process.env.S3_BUCKET ?? "migration-tower";
-  private readonly s3 = s3Client();
+  private readonly storage = createStorage();
 
   constructor(
     @InjectPinoLogger(UploadProcessingProcessor.name)
@@ -112,12 +98,8 @@ export class UploadProcessingProcessor implements OnApplicationBootstrap, OnAppl
     const tmpFile = path.join(tmpDir, path.basename(upload.originalFilename));
 
     try {
-      // 1. Stream S3 object → temp file (never load whole file in memory).
-      const obj: GetObjectCommandOutput = await this.s3.send(
-        new GetObjectCommand({ Bucket: this.bucket, Key: objectKey }),
-      );
-      const body = obj.Body as Readable | undefined;
-      if (!body) throw new UnrecoverableError("S3 object body was empty");
+      // 1. Stream object → temp file (never load whole file in memory).
+      const body = await this.storage.getStream(objectKey);
       await pipeline(body, createWriteStream(tmpFile));
 
       // 2. Detect format.

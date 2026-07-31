@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@migrationtower/ui";
+import { Button } from "@pintle/ui";
 
 import { useMe } from "@/lib/api/hooks";
 import { useSessionStore } from "@/lib/stores/session-store";

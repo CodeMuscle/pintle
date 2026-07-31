@@ -1,5 +1,5 @@
 {
-  "name": "@migrationtower/db",
+  "name": "@pintle/db",
   "version": "0.0.0",
   "private": true,
   "description": "Database client, Prisma schema, and migrations (every business table is tenant-scoped).",
@@ -28,7 +28,7 @@
     "studio": "prisma studio",
     "lint": "eslint \"src/**/*.ts\" --max-warnings=0",
     "type-check": "prisma generate && tsc -p tsconfig.json --noEmit",
-    "test": "echo \"@migrationtower/db: no tests yet\"",
+    "test": "echo \"@pintle/db: no tests yet\"",
     "clean": "rm -rf dist .turbo *.tsbuildinfo"
   },
   "dependencies": {
@@ -38,7 +38,7 @@
     "pg": "^8.13.1"
   },
   "devDependencies": {
-    "@migrationtower/tsconfig": "workspace:*",
+    "@pintle/tsconfig": "workspace:*",
     "@types/node": "20",
     "@types/pg": "^8.11.10",
     "prisma": "^7.0.0",

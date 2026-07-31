@@ -2,7 +2,7 @@
  * Domain error carrying a canonical ApiErrorCode. The global exception filter
  * turns this (and everything else) into the common error envelope.
  */
-import type { ApiErrorCode, ApiErrorDetail } from "@migrationtower/contracts";
+import type { ApiErrorCode, ApiErrorDetail } from "@pintle/contracts";
 
 const STATUS_BY_CODE: Record<ApiErrorCode, number> = {
   VALIDATION_FAILED: 400,

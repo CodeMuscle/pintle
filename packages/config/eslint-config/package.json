@@ -1,5 +1,5 @@
 {
-  "name": "@migrationtower/eslint-config",
+  "name": "@pintle/eslint-config",
   "version": "0.0.0",
   "private": true,
   "description": "Shared ESLint configuration for the Migration Tower monorepo.",
@@ -9,9 +9,9 @@
     "react.js"
   ],
   "scripts": {
-    "lint": "echo \"@migrationtower/eslint-config: nothing to lint\"",
-    "type-check": "echo \"@migrationtower/eslint-config: nothing to type-check\"",
-    "test": "echo \"@migrationtower/eslint-config: no tests\""
+    "lint": "echo \"@pintle/eslint-config: nothing to lint\"",
+    "type-check": "echo \"@pintle/eslint-config: nothing to type-check\"",
+    "test": "echo \"@pintle/eslint-config: no tests\""
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^7.16.0",

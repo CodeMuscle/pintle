@@ -6,7 +6,6 @@
  *   HttpException    → status-derived code
  *   anything else    → INTERNAL_ERROR (500), message hidden
  */
-import type { ApiErrorCode, ApiErrorDetail, ApiFailure } from "@migrationtower/contracts";
 import {
   ArgumentsHost,
   Catch,
@@ -15,6 +14,7 @@ import {
   HttpStatus,
   Logger,
 } from "@nestjs/common";
+import type { ApiErrorCode, ApiErrorDetail, ApiFailure } from "@pintle/contracts";
 import { ZodError } from "zod";
 
 import { ApiException } from "./api-exception.js";

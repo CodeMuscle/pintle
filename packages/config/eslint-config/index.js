@@ -1,6 +1,6 @@
 /**
  * Base ESLint config (ESLint 8, eslintrc format) shared across the monorepo.
- * Extend from a package via `{ "extends": ["@migrationtower/eslint-config"] }`.
+ * Extend from a package via `{ "extends": ["@pintle/eslint-config"] }`.
  */
 module.exports = {
   root: true,
