@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="22" fill="#0D1414"/>
+  <g fill="none" stroke="#E8ECEA" stroke-width="9" stroke-linecap="round">
+    <path id="h" d="M50 26 a13 13 0 0 1 0 26"/>
+    <use href="#h" transform="rotate(180 50 50)"/>
+  </g>
+  <line x1="50" y1="24" x2="50" y2="76" stroke="#35D6BE" stroke-width="9" stroke-linecap="round"/>
+</svg>

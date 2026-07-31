@@ -2,6 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ThemeProvider } from "next-themes";
 import { Suspense, useState } from "react";
 
 import { PostHogProvider } from "@/lib/analytics/posthog-provider";
@@ -43,11 +44,13 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   );
 
   return (
-    <PostHogProvider>
-      <QueryClientProvider client={queryClient}>
-        <InnerProviders>{children}</InnerProviders>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </PostHogProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <PostHogProvider>
+        <QueryClientProvider client={queryClient}>
+          <InnerProviders>{children}</InnerProviders>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </PostHogProvider>
+    </ThemeProvider>
   );
 }
